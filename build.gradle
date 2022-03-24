@@ -1,0 +1,27 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31' 
+    id 'application' 
+}
+
+repositories { 
+    mavenCentral() 
+}
+
+// jar {
+//     archiveBaseName = 'selenium-scripts'
+//     archiveVersion =  '0.1.0'
+// }
+
+// sourceCompatibility = 1.8
+// targetCompatibility = 1.8
+
+dependencies {
+    implementation platform('org.jetbrains.kotlin:kotlin-bom') 
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8' 
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.2'
+}
+
+application {
+    mainClass = 'demo.AppKt' 
+}
