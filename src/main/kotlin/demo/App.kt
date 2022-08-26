@@ -1,5 +1,6 @@
 package demo
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,10 +18,10 @@ class App {
 }
 
 fun main() {
-    val caps = DesiredCapabilities();
-    caps.setJavascriptEnabled(true); // not really needed: JS enabled by default
-    caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "src/test/resources/phantomjs");
-
-    val driver = PhantomJSDriver(caps);
-    driver.get("https://devqa.io");
+    val wdm = WebDriverManager.chromedriver().browserInDocker().enableVnc().enableRecording();
+    val driver = wdm.create();
+    driver.get("https://example.org/");
+    val heading1 = driver.findElement(By.tagName("h1"));
+    println("Heading:" + heading1.text);
+    wdm.quit();
 }
