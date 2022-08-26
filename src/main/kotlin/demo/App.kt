@@ -9,19 +9,22 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import java.io.File
+import java.sql.Timestamp
+import java.time.format.DateTimeFormatter
+import java.time.Instant
 
 class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
 }
 
 fun main() {
-    val wdm = WebDriverManager.chromedriver().browserInDocker().enableVnc().enableRecording();
+    val wdm = WebDriverManager.chromedriver().browserInDocker().enableVnc();
     val driver = wdm.create();
     driver.get("https://example.org/");
     val heading1 = driver.findElement(By.tagName("h1"));
-    println("Heading:" + heading1.text);
+    println("Heading: " + heading1.text);
+    val resultFile = File("result-" + DateTimeFormatter.ISO_INSTANT.format(Instant.now()) + ".txt")
+    resultFile.appendText("Result:\n");
+    resultFile.appendText(heading1.text);
     wdm.quit();
 }
