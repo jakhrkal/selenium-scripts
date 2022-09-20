@@ -2,6 +2,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.7.10'
     id 'java'
     id 'application'
+    id 'io.ktor.plugin' version '2.1.1'
 }
 
 mainClassName = 'demo.AppKt'
@@ -10,6 +11,10 @@ version = '0.0.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+application {
+    mainClass.set('demo.AppKt')
+}
 
 repositories { 
     mavenCentral() 
@@ -26,8 +31,4 @@ jar {
     manifest {
         attributes 'Main-Class': 'demo.AppKt'
     }
-}
-
-application {
-    mainClass = 'demo.AppKt' 
 }
