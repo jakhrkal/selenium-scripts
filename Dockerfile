@@ -1,9 +1,9 @@
 FROM gradle:7.5.1-jdk8 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle buildFatJar --no-daemon 
+RUN gradle clean buildFatJar --no-daemon 
 
-FROM openjdk:8-jre-slim
+FROM eclipse-temurin:8-jre
 
 EXPOSE 8080
 

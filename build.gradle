@@ -12,10 +12,6 @@ version = '0.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-application {
-    mainClass.set('demo.AppKt')
-}
-
 repositories { 
     mavenCentral() 
 }
@@ -25,10 +21,4 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8' 
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.1.2'
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.1.1'
-}
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'demo.AppKt'
-    }
 }
