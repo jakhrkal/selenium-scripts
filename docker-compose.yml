@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+ 
+  selenium:
+    build: .
+    container_name: selenium-scripts
+    depends_on:
+      chrome:
+        condition: service_healthy
+    links:
+      - chrome
+ 
+  chrome:
+    image: selenium/standalone-chrome
+    container_name: web-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "4444:4444"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4444/ui"]
+      interval: 5s
+      timeout: 3s
+      retries: 20 
