@@ -4,6 +4,8 @@ services:
   selenium:
     build: .
     container_name: selenium-scripts
+    volumes:
+      - ./output:/output
     depends_on:
       chrome:
         condition: service_healthy
